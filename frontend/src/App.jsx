@@ -31,6 +31,19 @@ const PublicRoute = ({ children }) => {
   return children;
 };
 
+// Componente para proteger rutas solo para administradores
+const AdminRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  
+  if (loading) return null;
+  
+  if (!user || user.rol !== 'ADMIN') {
+    return <Navigate to="/" replace />;
+  }
+  
+  return children;
+};
+
 function AppRoutes() {
   return (
     <Routes>
@@ -45,9 +58,9 @@ function AppRoutes() {
       <Route 
         path="/register" 
         element={
-          <PublicRoute>
+          <AdminRoute>
             <RegisterPage />
-          </PublicRoute>
+          </AdminRoute>
         } 
       />
       <Route 

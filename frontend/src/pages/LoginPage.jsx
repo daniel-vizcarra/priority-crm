@@ -69,12 +69,6 @@ export const LoginPage = () => {
         </div>
       </form>
       
-      <p style={{ marginTop: '2rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-        ¿No tienes una cuenta? {' '}
-        <Link to="/register" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: '500' }}>
-          Regístrate aquí
-        </Link>
-      </p>
     </AuthLayout>
   );
 };
